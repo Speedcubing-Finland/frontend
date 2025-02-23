@@ -1,0 +1,214 @@
+/* Define brand color variable */
+:root {
+  --brand-color: #2969ff;
+  --secondary-color: #333;
+}
+
+/* Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  padding-top: 60px; /* Same as navbar height */
+  margin: 0;
+}
+
+.main-container {
+  max-width: 1200px;   /* or 960px, 1200px—pick a width you like */
+  margin: 0 auto;     /* center it horizontally */
+  padding: 1rem;      /* optional padding for readability */
+}
+
+.title-section {
+  /* Your existing styles */
+  margin: 0;
+  padding: 3rem 1rem 3rem;
+  background: linear-gradient(
+    180deg,
+    var(--brand-color) 30%,
+    #5ea3ff 100%
+  );
+  color: white;
+  text-align: center;
+  border-bottom-left-radius: 100% 60%;
+  border-bottom-right-radius: 100% 60%;
+
+  /* The animation itself */
+  animation: slideDown 0.6s ease-out forwards; 
+  /* 0.6s = duration, adjust as you like */
+}
+
+.title-section h1 {
+  font-size: 1.875rem; /* ~ text-3xl */
+  font-weight: bold;   /* font-bold equivalent */
+  margin: 0;           /* Remove default heading margin if desired */
+}
+.navbar {
+  display: flex;
+  justify-content: center; /* Center the navigation links */
+  align-items: center; /* Vertically align items */
+  padding: 0 2rem; /* Horizontal padding */
+  height: 60px; /* Fixed navbar height */
+  background-color: white;
+  border-bottom: 1px solid #ddd; /* Subtle border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+/* Navbar brand/logo */
+.navbar a.text-xl {
+  position: absolute; /* Pin logo to the top-left */
+  top: 50%; /* Vertically center logo in navbar */
+  left: 2rem; /* Add space from the left edge */
+  transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+  text-decoration: none;
+  color: var(--brand-color); /* Brand color for the logo */
+  font-weight: bold;
+  font-size: 1.5rem; /* Adjust font size */
+}
+
+/* Navbar links container */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem; /* Space between links */
+  margin-right: auto; /* Keep the links centered */
+  text-align: center;
+}
+
+/* Navbar link styles */
+.navbar-link {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem; /* Consistent padding */
+  transition: color 0.5s ease, transform 0.5s ease; /* Smooth transition for hover effects */
+}
+
+.navbar-link:hover {
+  color: var(--brand-color); /* Use brand color for hover */
+  transform: scale(1.1); /* Zoom effect */
+  text-decoration: none; /* Explicitly ensure no underline on hover */
+}
+
+/* Active link styling */
+.navbar-link.active {
+  color: var(--brand-color);
+  font-weight: bold;
+  border-bottom: 2px solid var(--brand-color); /* Active underline */
+}
+
+
+.navbar-link::after {
+  content: none; /* Remove hover underline animation for navbar */
+}
+
+/* Button styles */
+.button {
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--brand-color);
+  color: var(--brand-color);
+  background-color: white;
+  border-radius: 0.375rem;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Button hover state */
+.button:hover {
+  background-color: var(--brand-color);
+  color: white;
+}
+
+/* Button active (pressed) state */
+.button:active {
+  background-color: #1E5CCF;
+  color: white;
+}
+
+/* Form container styles */
+.form-container {
+  border: none;
+  border-radius: 0.375rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2.5px 6px var(--brand-color);
+}
+
+/* Paragraph styles */
+.page-paragraph {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 1.5rem; /* Add space inside the box */
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 6px var(--brand-color); /* Subtle shadow */
+  margin-bottom: 1.5rem; /* Space between paragraphs */
+  line-height: 1.6; /* Improve readability */
+  color: #4a4a4a; /* Text color */
+}
+
+.paragraph-title {
+  font-size: 1.25rem; /* Slightly larger for emphasis */
+  font-weight: bold; /* Make it stand out */
+  margin-bottom: 0.5rem; /* Space below the title */
+  color: #333; /* Darker color for the title */
+}
+
+/* Ensure proper spacing for all sections */
+.section {
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: white;
+}
+
+
+.event-list {
+  margin-top: 1rem;
+}
+
+.event-tag {
+  display: inline-block;
+  border-radius: 0.375rem;
+  font-size: 0.875rem; /* Slightly smaller font */
+  line-height: 1.25rem;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+a {
+  color: var(--brand-color);
+  text-decoration: none; /* Remove default underline */
+  font-weight: 500; 
+  transition: color 0.3s ease; 
+}
+
+/* Optional: Hover effect without underline */
+.page-paragraph a:hover,
+.main-container a:hover {
+  color: #0047cc; /* Slightly darker color on hover */
+}
+
+

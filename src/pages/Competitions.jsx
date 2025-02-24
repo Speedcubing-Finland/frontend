@@ -21,7 +21,7 @@ function Competitions() {
     <div className="mt-8">
       <ParagraphBox title="Yleistä">
         <p>
-          Kaikki Speedcubing Finlandin järjestämät kilapilut ovat avoimia kaikille harrastajille. Kilpailuja järjestetään Suomessa useita kertoja vuodessa. Kaikki Suomessa järjestettävät kilpailut
+          Kaikki Speedcubing Finlandin järjestämät kilpailut ovat avoimia kaikille harrastajille. Kilpailuja järjestetään Suomessa useita kertoja vuodessa. Kaikki Suomessa järjestettävät kilpailut
           noudattavat kansainvälisen kattojärjsetön{' '}
           <a href="https://www.worldcubeassociation.org/" target="_blank" rel="noopener noreferrer">World Cube Associationin</a>{' '}
           sääntöjä, ja kaikki kilpailuissa tehdyt tulokset ja ennätykset rekisteröidään WCA:n{' '}
@@ -57,7 +57,7 @@ function Competitions() {
         </div>
       </ParagraphBox>
 
-      <ParagraphBox title="Haluaistiko järjestää kilpailut?">
+      <ParagraphBox title="Haluaisitko järjestää kilpailut?">
         <p className="mb-10">
           Mikäli olet kiinnostunut järjestämään speedcubing-kilpailut, ota yhteyttä johonkin Suomen neljästä WCA:n valtuuttamasta delegaatista.
           Delegaatit ovat kokeneita speedcubing-harrastajia, ja jokainen kilpailu vaatii vähintään yhden delegaatin läsnäolon. Delegaatit auttavat kilpailun
@@ -67,7 +67,7 @@ function Competitions() {
         <p>
           Vähimmillään kilpailun järjestäminen vaatii vain kilpailupaikan hankkimista. Kilpailupaikkana voi toimia esimerkiksi koulun ruokala tai liikuntasali.
           Voit siis olla yhteydessä esimerkiksi omaan kouluusi, ja kysyä mahdollisuutta järjestää kilpailut siellä. Kaikki kilpailuihin vaadittava kalusto, ajanottolaitteet, sekuntikellot yms. 
-          tarvikkeet löytyvät Speedcubing Finlandilta, joten kilpailun järjestäminen on helppoa. Kilpailupaikan maksimi vuokrahinnasta 
+          tarvikkeet löytyvät Speedcubing Finlandilta, joten kilpailun järjestäminen on helppoa. Kilpailupaikan maksimivuokrahinnasta 
           tulee neuvotella Speedcubing Finlandin hallituksen kanssa, joka hoitaa kaikki kustannukset kilpailun järjestämisestä.
         </p>
       </ParagraphBox>

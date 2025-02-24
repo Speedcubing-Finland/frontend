@@ -10,11 +10,11 @@ function Info() {
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="md:w-2/3">
             <p>
-              Rubikin kuution keksi unkarilainen arkkitehti Ernő Rubiki vuonna 1974. 
+              Rubikin kuution keksi unkarilainen arkkitehti Ernő Rubik vuonna 1974. 
               Kuutiosta tuli 1980-luvulla maailmanlaajuinen ilmiö, ja siitä lähtien se on pysynyt maailman tunnetuimpana 
-              pulmpapelinä. Vuonna 1982 järjestettiin ensimmäiset Rubikin kuution maailmanmestaruuskilpailut, joihin osallistui 19 kilpailijaa.
+              pulmapelinä. Vuonna 1982 järjestettiin ensimmäiset Rubikin kuution maailmanmestaruuskilpailut, joihin osallistui 19 kilpailijaa.
               Kilpailut voitti yhdysvaltalainen Minh Thai, joka ratkaisi kuution 22,95 sekunnissa. Seuraavat MM-kilpailut järjestettiinkin vasta 
-              vuonna 2003, jonka jälkeen MM-kilpailuja on järjestetty tasaisesti joka toinen vuosi. Vuonna 2004 perustettiin kansaivälinen kattojärjestö World Cube Association (WCA),
+              vuonna 2003, jonka jälkeen MM-kilpailuja on järjestetty tasaisesti joka toinen vuosi. Vuonna 2004 perustettiin kansainvälinen kattojärjestö World Cube Association (WCA),
               jonka sääntöjä ja ohjeistuksia jokaisen virallisen kilpailun tulee nykyisin noudattaa.   
 
             </p>
@@ -52,8 +52,8 @@ function Info() {
           <div className="md:w-2/3">
             <p>
               Aloittelijan kannattaa valita laadukas, mutta edullinen kuutio. Kilpakäyttöön soveltuvia kuutioita saa jo noin 10-20 eurolla. Tärkeimpänä ominaisuutena
-              kilpakäyttöön soveltuvissa kuutiossa verrattuna tavalliseen Rubik's merkkiseen kuutioon on magneettisuus. Magneettisuus kuutiossa auttaa kuutiota käännellessä
-              sen sivuja pysähtymään juuri oikeaan kohtaan, joka vähentää kuution tökkimistä ja auttaa näin säästämään aikaa ratkaisussa. Lisäksi kilpakäyttöön soveltuvissa kuutioissa
+              kilpakäyttöön soveltuvissa kuutiossa verrattuna tavalliseen Rubik's-merkkiseen kuutioon on magneettisuus. Magneettisuus kuutiossa auttaa kuutiota käännellessä
+              sen sivuja pysähtymään juuri oikeaan kohtaan, mikä vähentää kuution tökkimistä ja auttaa näin säästämään aikaa ratkaisussa. Lisäksi kilpakäyttöön soveltuvissa kuutioissa
               on usein myös erilaisia säätöominaisuuksia, joiden avulla kuution kääntyvyyttä voi muokata itselleen sopivaksi. Kilpakäyttöön soveltuvia kuutiota saa ostettua Suomessa esimerkiksi <a href="https://kuutiostore.fi/" target="_blank" rel="noopener noreferrer">kuutiostore.fi</a> verkkokaupasta. 
               Kuutiostoren valikoima on laaja, ja se keskittyy kilpakäyttöön suunnattuihin kuutioihin.
             </p>

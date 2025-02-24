@@ -11,7 +11,7 @@ function Join() {
         jäseneksi täyttämällä alla olevan lomakkeen. Voit myös liittyä jäseneksi, vaikka et olisi vielä osallistunut yhteenkään kilpailuun. Jätä
         siinä tapauksessa WCA ID -kenttä tyhjäksi.
         <p className="mt-8">
-          Jäsentietojasi ei jaeta kolmansille osapuolille. Jäsnetietoja käytetään ainoastaan Speedcubing 
+          Jäsentietojasi ei jaeta kolmansille osapuolille. Jäsentietoja käytetään ainoastaan Speedcubing 
           Finlandin jäsenrekisterin ylläpitoon, sekä kilpailutoiminnan ja jäsenpalveluiden kehittämiseen. Mikäli sinulle tulee tarve 
           poistaa tai muokata jäsentietojasi, voit ottaa yhteyttä yhdistyksen hallitukseen. 
         </p>

@@ -10,8 +10,8 @@ function Home() {
         text={`Speedcubing on harrastus, jossa pyritään ratkaisemaan Rubikin kuutioita ja
                 sen kaltaisia pulmapelejä mahdollisimman nopeasti. Speedcubing on vielä
                 suhteellisen tuntematon harrastus, mutta sen suosio kasvaa jatkuvasti. Speedcubing Finland on yhdistys, joka
-                järjestää kilpailuja speedcubing harrastajille Suomessa. Yhdistyksen jäseneksi liittyminen on ilmaista, 
-                ja jäseneksi voi liittyä kuka tahansa speedcubingista kiinnostunut. Jäsenenä saat muun muassa alennsuta kilpailumaksuista.
+                järjestää kilpailuja speedcubing-harrastajille Suomessa. Yhdistyksen jäseneksi liittyminen on ilmaista, 
+                ja jäseneksi voi liittyä kuka tahansa speedcubingista kiinnostunut. Jäsenenä saat muun muassa alennusta kilpailumaksuista.
                 `}
         imageSrc={placeholder}
         imageAlt="Speedcubing example"
@@ -22,10 +22,10 @@ function Home() {
       {/* Section 2: Image on the left */}
       <InfoSection
         title="Kilpailut Suomessa"
-        text="Suomessa on ollut aktiivista kilpailutoimintaa vuodesta 2007 lähtien. Nykyisin kilpailuja järjsetetään
+        text="Suomessa on ollut aktiivista kilpailutoimintaa vuodesta 2007 lähtien. Nykyisin kilpailuja järjestetään
               jo useita kertoja vuodessa eri puolilla Suomea. Kilpailut ovat avoimia kaikille harrastajille, ja niihin
-              voi osallistua hyvin matalalla kynnyksellä. Kilpailuissa kilpaillaan 17 virallisessa kansainvälisen kattojärjsetön
-              World Cube Associationin tunnustaamassa lajissa. Kaiken tarvittavan tiedon kilpailuista löydät kilpailut-sivulta."
+              voi osallistua hyvin matalalla kynnyksellä. Kilpailuissa kilpaillaan 17 virallisessa kansainvälisen kattojärjestön
+              World Cube Associationin tunnustammassa lajissa. Kaiken tarvittavan tiedon kilpailuista löydät kilpailut-sivulta."
         imageSrc={placeholder}
         imageAlt="Kilpailu example"
         buttonLabel="Lisää kilpailuista"
@@ -38,7 +38,7 @@ function Home() {
         title="Miten aloittaa?"
         text="Speedcubing on erinomainen harrastus kaikille iästä ja taustasta riippumatta. Aloittaminen on helppoa 
               ja edullista. Speedcubingin aloittamiseen tarvitset vain yhden Rubikin kuution.
-              Ohjeita Rubikin kuution ratkaisuun, sekä muita vinkkejä ja neuvoja esimerkiski kilapilukäyttöön sovelutvien kuutioiden valintaan löydät tietoa-sivulta."
+              Ohjeita Rubikin kuution ratkaisuun, sekä muita vinkkejä ja neuvoja esimerkiksi kilapilukäyttöön soveltuvien kuutioiden valintaan löydät tietoa-sivulta."
         imageSrc={placeholder}
         imageAlt="A person solving Rubik's cube"
         buttonLabel="Lue lisää"

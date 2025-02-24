@@ -6,10 +6,10 @@ function Contact() {
         <p>
           Mikäli sinulla on mitä tahansa kysyttävää, ota yhteyttä sähköpostitse:
         </p>
-        <p className="mb-10 font-bold">speedcubingfinland@gmail.com</p>
+        <p className="mb-10 font-bold">hallitus@speedcubingfinland.fi</p>
         <p className="mb-4">
           Kilpailuihin tai kilpailujen järjestämiseen liittyvissä asioissa
-          voit ottaa yhteyttä myös suoraan johonkin Suomen neljästä World Cube Associationin valtuuttamasta
+          voit ottaa yhteyttä myös suoraan johonkin Suomen kolmesta World Cube Associationin valtuuttamasta
           delegaatista:
         </p>
         
@@ -19,9 +19,6 @@ function Contact() {
           </li>
           <li>
           Tomi Ronkainen: <span className="font-bold">tronkainen@worldcubeassociation.org</span>
-          </li>
-          <li>
-          Timo Norrkniivilä: <span className="font-bold">tnorrkniivila©worldcubeassociation.org</span>
           </li>
           <li>
           Olli Vikstedt: <span className="font-bold">ovikstedt@worldcubeassociation.org</span>

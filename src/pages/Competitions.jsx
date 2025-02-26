@@ -59,7 +59,7 @@ function Competitions() {
 
       <ParagraphBox title="Haluaisitko järjestää kilpailut?">
         <p className="mb-10">
-          Mikäli olet kiinnostunut järjestämään speedcubing-kilpailut, ota yhteyttä johonkin Suomen neljästä WCA:n valtuuttamasta delegaatista.
+          Mikäli olet kiinnostunut järjestämään speedcubing-kilpailut, ota yhteyttä johonkin Suomen kolmesta WCA:n valtuuttamasta delegaatista.
           Delegaatit ovat kokeneita speedcubing-harrastajia, ja jokainen kilpailu vaatii vähintään yhden delegaatin läsnäolon. Delegaatit auttavat kilpailun
           järjestämisessä, ja varmistavat, että kilpailu noudattaa WCA:n sääntöjä. Delegaatit myös rekisteröivät kilpailun WCA:n sivuille, ja julkaisevat kilpailun. 
           Heidän yhteystiedot löydät "Yhteystiedot"-sivulta.

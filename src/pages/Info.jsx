@@ -1,6 +1,7 @@
 import ParagraphBox from '../components/ParagraphBox';
 import placeholder from '../assets/placeholder.png'; // Placeholder image
 import kuutiostoreLogo from '../assets/kuutiostore_logo.png'; // Kuutiostore logo
+import vanhaKuutio from '../assets/vanhaKuutio.webp'; // Old Rubik's cube image
 
 function Info() {
   return (
@@ -20,7 +21,7 @@ function Info() {
             </p>
           </div>
           <img
-            src={placeholder}
+            src={vanhaKuutio}
             alt="Rubikin kuution historia"
             className="md:w-1/3 w-full rounded shadow"
           />

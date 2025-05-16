@@ -53,7 +53,7 @@ function Info() {
           <div className="md:w-2/3">
             <p>
               Aloittelijan kannattaa valita laadukas, mutta edullinen kuutio. Kilpakäyttöön soveltuvia kuutioita saa jo noin 10-20 eurolla. Tärkeimpänä ominaisuutena
-              kilpakäyttöön soveltuvissa kuutiossa verrattuna tavalliseen Rubik's-merkkiseen kuutioon on magneettisuus. Magneettisuus kuutiossa auttaa kuutiota käännellessä
+              kilpakäyttöön soveltuvissa kuutiossa verrattuna tavalliseen Rubiks-merkkiseen kuutioon on magneettisuus. Magneettisuus kuutiossa auttaa kuutiota käännellessä
               sen sivuja pysähtymään juuri oikeaan kohtaan, mikä vähentää kuution tökkimistä ja auttaa näin säästämään aikaa ratkaisussa. Lisäksi kilpakäyttöön soveltuvissa kuutioissa
               on usein myös erilaisia säätöominaisuuksia, joiden avulla kuution kääntyvyyttä voi muokata itselleen sopivaksi. Kilpakäyttöön soveltuvia kuutiota saa ostettua Suomessa esimerkiksi <a href="https://kuutiostore.fi/" target="_blank" rel="noopener noreferrer">kuutiostore.fi</a> verkkokaupasta. 
               Kuutiostoren valikoima on laaja, ja se keskittyy kilpakäyttöön suunnattuihin kuutioihin. Käyttämällä koodia "scf5" saat myös 5% alennusta

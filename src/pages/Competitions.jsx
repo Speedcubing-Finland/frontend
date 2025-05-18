@@ -62,7 +62,7 @@ function Competitions() {
           Mikäli olet kiinnostunut järjestämään speedcubing-kilpailut, ota yhteyttä johonkin Suomen kolmesta WCA:n valtuuttamasta delegaatista.
           Delegaatit ovat kokeneita speedcubing-harrastajia, ja jokainen kilpailu vaatii vähintään yhden delegaatin läsnäolon. Delegaatit auttavat kilpailun
           järjestämisessä, ja varmistavat, että kilpailu noudattaa WCA:n sääntöjä. Delegaatit myös rekisteröivät kilpailun WCA:n sivuille, ja julkaisevat kilpailun. 
-          Heidän yhteystiedot löydät Yhteystiedot-sivulta.
+          Delegaattien yhteystiedot löydät <a href="/contact">Yhteystiedot</a>-sivulta.
         </p>
         <p>
           Vähimmillään kilpailun järjestäminen vaatii vain kilpailupaikan hankkimista. Kilpailupaikkana voi toimia esimerkiksi koulun ruokala tai liikuntasali.

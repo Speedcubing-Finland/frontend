@@ -8,12 +8,6 @@ function Home() {
   return (
     
     <div>
-      <p style={{ margin: '32px auto', maxWidth: 1000, padding: 16, background: '#f5f5f5', borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-        Kutsu sääntömääräiseen yhdistyksen kevätkokoukseen on lähetetty kaikille jäsenille sähköpostitse. 
-        Kokous pidetään etäkokouksena Teamsissa 24.5.2025 klo 20:00. Mikäli et ole vielä jäsen ja haluaisit osallistua kokoukseen,
-        voit liittyä jäseneksi <a href="/join" className="text-blue-500 underline">tästä</a>. Laitathan myös viestiä sähköpostitse
-        osoitteeseen hallitus@speedcubingfinland.fi, niin lähetämme sinulle kokouslinkin.
-      </p>
       <InfoSection
         title="Mitä on speedcubing?"
         text={`Speedcubing on harrastus, jossa pyritään ratkaisemaan Rubikin kuutioita ja

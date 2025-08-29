@@ -48,8 +48,8 @@ function CompetitionTable({ competitions }) {
                 <td className="border p-2">{competition.city}</td>
                 <td className="border p-2">
                   {isSingleDay
-                    ? new Date(competition.start_date).toLocaleDateString()
-                    : `${new Date(competition.start_date).toLocaleDateString()} - ${new Date(competition.end_date).toLocaleDateString()}`}
+                    ? new Date(competition.start_date).toLocaleDateString('fi-FI')
+                    : `${new Date(competition.start_date).toLocaleDateString('fi-FI')} - ${new Date(competition.end_date).toLocaleDateString('fi-FI')}`}
                 </td>
                 <td className="border p-2">
                   <div className="flex flex-wrap gap-2">
@@ -66,8 +66,8 @@ function CompetitionTable({ competitions }) {
                   </div>
                 </td>
                 <td className="border p-2">
-                  {new Date(competition.registration_open).toLocaleDateString()} -{' '}
-                  {new Date(competition.registration_close).toLocaleDateString()}
+                  {new Date(competition.registration_open).toLocaleDateString('fi-FI')} -{' '}
+                  {new Date(competition.registration_close).toLocaleDateString('fi-FI')}
                 </td>
               </tr>
             );

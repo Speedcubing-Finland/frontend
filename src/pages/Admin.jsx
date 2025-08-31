@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import LoginForm from '../components/LoginForm'; // Import LoginForm
+import MemberCsvChecker from '../components/MemberCsvChecker';
 
 function Admin() {
   const [submissions, setSubmissions] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [members, setMembers] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem('isAuthenticated')) {
@@ -26,6 +28,15 @@ function Admin() {
         .then((response) => response.json())
         .then((data) => setSubmissions(data))
         .catch((error) => console.error('Error fetching submissions:', error));
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetch(`${import.meta.env.VITE_API_BASE_URL}/api/members`)
+        .then((res) => res.json())
+        .then((data) => setMembers(data))
+        .catch((err) => console.error('Error fetching members:', err));
     }
   }, [isAuthenticated]);
 
@@ -72,9 +83,8 @@ function Admin() {
       <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">
         Logout
       </button>
-
       <h1 className="text-2xl font-bold text-center my-4">Admin Page</h1>
-
+      <MemberCsvChecker members={members} />
       {/* Add scrollable wrapper for the table */}
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">

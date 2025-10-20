@@ -8,6 +8,7 @@ function Home() {
   return (
     
     <div>
+
       <InfoSection
         title="Mitä on speedcubing?"
         text={`Speedcubing on harrastus, jossa pyritään ratkaisemaan Rubikin kuutioita ja

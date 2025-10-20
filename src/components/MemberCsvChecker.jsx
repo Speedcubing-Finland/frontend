@@ -10,10 +10,18 @@ function MemberCsvChecker({ members }) {
   const [showFoundByWca, setShowFoundByWca] = useState(false);
   const [showEmailMatches, setShowEmailMatches] = useState(false);
   const [showNotMembers, setShowNotMembers] = useState(false);
+  const [membersError, setMembersError] = useState('');
 
   const handleDrop = (e) => {
     e.preventDefault();
     setError('');
+    setMembersError('');
+    
+    if (!members || members.length === 0) {
+      setMembersError('Cannot compare: No members data available. The backend may not be properly deployed or connected.');
+      return;
+    }
+    
     const file = e.dataTransfer.files[0];
     if (!file) return;
     Papa.parse(file, {
@@ -118,9 +126,9 @@ function MemberCsvChecker({ members }) {
         <p className="text-sm text-gray-600 mt-2">Compare competitors with Speedcubing Finland members</p>
       </div>
       
-      {error && (
+      {(error || membersError) && (
         <div className="text-red-600 bg-red-50 p-3 rounded mb-4">
-          {error}
+          {error || membersError}
         </div>
       )}
 

@@ -33,10 +33,25 @@ function Admin() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      // Try to fetch members, but don't break if it fails
       fetch(`${import.meta.env.VITE_API_BASE_URL}/api/members`)
-        .then((res) => res.json())
-        .then((data) => setMembers(data))
-        .catch((err) => console.error('Error fetching members:', err));
+        .then((res) => {
+          if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+            // Server returned HTML instead of JSON - endpoint doesn't exist
+            console.warn('Members endpoint not available in production yet');
+            setMembers([]);
+            return [];
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log('Members fetched successfully:', data?.length || 0);
+          setMembers(data || []);
+        })
+        .catch((err) => {
+          console.error('Error fetching members:', err);
+          setMembers([]); // Set empty array so the component doesn't break
+        });
     }
   }, [isAuthenticated]);
 

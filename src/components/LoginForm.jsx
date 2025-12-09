@@ -1,23 +1,26 @@
 import PropTypes from 'prop-types'; // Import PropTypes
 import { useState } from 'react';
+import { login } from '../utilities/api';
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setErrorMessage('');
+    setIsLoading(true);
 
-    // Get credentials from .env using import.meta.env
-    const storedUsername = import.meta.env.VITE_ADMIN_USERNAME;
-    const storedPassword = import.meta.env.VITE_ADMIN_PASSWORD;
-
-    if (username === storedUsername && password === storedPassword) {
-      localStorage.setItem('isAuthenticated', 'true');
+    try {
+      // Call the login API
+      await login(username, password);
       onLogin(true);
-    } else {
-      setErrorMessage('Invalid credentials');
+    } catch (error) {
+      setErrorMessage(error.message || 'Invalid credentials');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -59,8 +62,12 @@ function LoginForm({ onLogin }) {
           />
         </div>
         <div className="text-center">
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-            Login
+          <button 
+            type="submit" 
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Logging in...' : 'Login'}
           </button>
         </div>
       </form>

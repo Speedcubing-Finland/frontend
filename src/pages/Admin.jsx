@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import LoginForm from '../components/LoginForm'; // Import LoginForm
 import MemberCsvChecker from '../components/MemberCsvChecker';
+import { isAuthenticated as checkAuth, logout, api } from '../utilities/api';
 
 function Admin() {
   const [submissions, setSubmissions] = useState([]);
@@ -8,7 +9,7 @@ function Admin() {
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem('isAuthenticated')) {
+    if (checkAuth()) {
       setIsAuthenticated(true); // Check if the user is authenticated
     }
   }, []);
@@ -18,14 +19,13 @@ function Admin() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
+    logout();
     setIsAuthenticated(false); // Clear authentication flag
   };
 
   useEffect(() => {
     if (isAuthenticated) {
-      fetch(`${import.meta.env.VITE_API_BASE_URL}/api/submissions`)
-        .then((response) => response.json())
+      api.get('/api/admin/submissions')
         .then((data) => setSubmissions(data))
         .catch((error) => console.error('Error fetching submissions:', error));
     }
@@ -33,17 +33,7 @@ function Admin() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      // Try to fetch members, but don't break if it fails
-      fetch(`${import.meta.env.VITE_API_BASE_URL}/api/members`)
-        .then((res) => {
-          if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-            // Server returned HTML instead of JSON - endpoint doesn't exist
-            console.warn('Members endpoint not available in production yet');
-            setMembers([]);
-            return [];
-          }
-          return res.json();
-        })
+      api.get('/api/admin/members')
         .then((data) => {
           console.log('Members fetched successfully:', data?.length || 0);
           setMembers(data || []);
@@ -60,42 +50,35 @@ function Admin() {
   }
 
   const handleApprove = (index) => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/approve`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ index }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setSubmissions((prev) => prev.filter((_, i) => i !== index));
-          alert('Submission approved successfully!');
-        } else {
-          alert('Error approving submission.');
-        }
+    api.post('/api/admin/approve', { index })
+      .then(() => {
+        setSubmissions((prev) => prev.filter((_, i) => i !== index));
+        alert('Submission approved successfully!');
       })
-      .catch((error) => console.error('Error approving submission:', error));
+      .catch((error) => {
+        console.error('Error approving submission:', error);
+        alert('Error approving submission.');
+      });
   };
 
   const handleReject = (index) => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reject`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ index }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setSubmissions((prev) => prev.filter((_, i) => i !== index));
-          alert('Submission rejected successfully!');
-        } else {
-          alert('Error rejecting submission.');
-        }
+    api.post('/api/admin/reject', { index })
+      .then(() => {
+        setSubmissions((prev) => prev.filter((_, i) => i !== index));
+        alert('Submission rejected successfully!');
       })
-      .catch((error) => console.error('Error rejecting submission:', error));
+      .catch((error) => {
+        console.error('Error rejecting submission:', error);
+        alert('Error rejecting submission.');
+      });
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4">
-      <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">
+      <button 
+        onClick={handleLogout} 
+        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 my-4"
+      >
         Logout
       </button>
       <h1 className="text-2xl font-bold text-center my-4">Admin Page</h1>

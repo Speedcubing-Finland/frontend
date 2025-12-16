@@ -1,76 +1,110 @@
-/* Brand Colors - From Official Speedcubing Finland Brand Guidelines */
-:root {
-  /* Primary Brand Colors */
-  --brand-primary: rgb(21, 47, 84);      /* RGB 21, 47, 84 - Dark blue */
-  --brand-secondary: rgb(0, 61, 147);    /* RGB 0, 61, 147 - Medium blue */
-  
-  /* Supporting Colors */
-  --brand-light-blue: #5ea3ff;           /* Light blue for gradients */
-  --brand-dark-gray: #231f20;            /* Dark text */
-  --brand-medium-gray: #58595b;          /* Medium gray text */
-  
-  /* UI Colors */
-  --text-primary: #333333;
-  --text-secondary: #4a4a4a;
-  --background-light: #f9f9f9;
-  --white: #ffffff;
-  
-  /* Interactive States */
-  --hover-blue: #0047cc;
-  --shadow-color: rgba(0, 61, 147, 0.15);
-  
-  /* Layout */
-  --navbar-height: 80px;
-  --max-content-width: 1200px;
-  
-  /* Legacy compatibility */
-  --brand-color: rgb(0, 61, 147);
-  --secondary-color: #333;
-}
+/**
+ * Main Stylesheet Entry Point
+ * Speedcubing Finland Website
+ * 
+ * This file imports Tailwind CSS and custom component styles.
+ * Styles are organized by purpose for better maintainability.
+ */
 
-/* Tailwind base styles */
+/* Tailwind CSS Framework */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles and global resets */
-html {
-  font-family: 'Inter', sans-serif;
+/* Custom Styles - Organized by Purpose */
+@layer base {
+  /* Import design tokens and variables */
+  @import './styles/variables.css';
+  @import './styles/base.css';
 }
 
-body {
-  margin: 0;
+@layer components {
+  /* Import component-specific styles */
+  @import './styles/navbar.css';
+  @import './styles/components.css';
+  @import './styles/footer.css';
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding-top: var(--navbar-height);
+/* Legacy Layer - TO BE REFACTORED */
+@layer components {
+  :root {
+    /* Primary Brand Colors - From Official Speedcubing Finland Brand Guidelines */
+    --brand-primary: rgb(21, 47, 84);      /* RGB 21, 47, 84 - Dark blue */
+    --brand-secondary: rgb(0, 61, 147);    /* RGB 0, 61, 147 - Medium blue */
+    
+    /* Supporting Colors */
+    --brand-light-blue: #5ea3ff;           /* Light blue for gradients */
+    --brand-dark-gray: #231f20;            /* Dark text */
+    --brand-medium-gray: #58595b;          /* Medium gray text */
+    
+    /* UI Colors */
+    --text-primary: #333333;
+    --text-secondary: #4a4a4a;
+    --background-light: #f9f9f9;
+    --white: #ffffff;
+    
+    /* Interactive States */
+    --hover-blue: #0047cc;
+    --shadow-color: rgba(0, 61, 147, 0.15);
+    
+    /* Layout */
+    --navbar-height: 80px;
+    --max-content-width: 1200px;
+    
+    /* Legacy compatibility */
+    --brand-color: rgb(0, 61, 147);
+    --secondary-color: #333;
+  }
+
+  /* Global resets and layout foundation */
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: var(--navbar-height);
+  }
 }
 
-.main-container {
-  max-width: var(--max-content-width);
-  margin: 0 auto;
-  padding: 1rem;
-  flex: 1;
-  width: 100%;
-}
+/* =================================================================
+   COMPONENT STYLES
+   Reusable UI components with brand consistency
+   ================================================================= */
 
-a {
-  color: var(--brand-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
+@layer components {
+  /* Main content container */
+  .main-container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 1rem;
+    flex: 1;
+    width: 100%;
+  }
 
-.page-paragraph a:hover,
-.main-container a:hover {
-  color: var(--hover-blue);
-}
+  /* Links */
+  a {
+    color: var(--brand-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
 
-/* Navigation Bar Styles */
-.navbar {
+  .page-paragraph a:hover,
+  .main-container a:hover {
+    color: var(--hover-blue);
+  }
+
+  /* === NAVIGATION === */
+  
+  /* Navigation bar container */
+  .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,9 +190,15 @@ a {
 .navbar-link::after {
   content: none;
 }
+}
 
-/* Mobile adjustments */
+/* =================================================================
+   RESPONSIVE DESIGN
+   Mobile-first breakpoints and adjustments
+   ================================================================= */
+
 @media (max-width: 768px) {
+  /* Navbar mobile adjustments */
   .navbar {
     padding: 0 1rem;
   }
@@ -217,10 +257,12 @@ a {
   }
 }
 
-/* Component Styles */
-
-/* Title Section */
-.title-section {
+/* Back to components layer for remaining UI elements */
+@layer components {
+  /* === PAGE COMPONENTS === */
+  
+  /* Hero/Title Section */
+  .title-section {
   margin: 0;
   padding: 3rem 1rem 3rem;
   background: linear-gradient(
@@ -252,8 +294,10 @@ a {
   }
 }
 
-/* Button Styles */
-.button {
+  /* === BUTTONS === */
+  
+  /* Primary button component */
+  .button {
   display: inline-block;
   font-weight: bold;
   font-size: 1.125rem;
@@ -283,8 +327,10 @@ a {
   box-shadow: 0 2px 4px rgba(0, 61, 147, 0.2);
 }
 
-/* Form Container */
-.form-container {
+  /* === FORMS & CONTENT === */
+  
+  /* Form wrapper */
+  .form-container {
   border: none;
   border-radius: 0.375rem;
   margin-bottom: 2rem;
@@ -331,11 +377,14 @@ a {
   white-space: nowrap;
 }
 
-/* Footer Styles */
-footer {
-  margin-top: auto;
-  background-color: var(--background-light);
-  border-top: 1px solid #ddd;
-  padding: 2rem 0;
-  color: var(--text-secondary);
+  /* === FOOTER === */
+  
+  /* Site footer */
+  footer {
+    margin-top: auto;
+    background-color: var(--background-light);
+    border-top: 1px solid #ddd;
+    padding: 2rem 0;
+    color: var(--text-secondary);
+  }
 }

@@ -1,0 +1,25 @@
+/* Brand Colors - From Official Speedcubing Finland Brand Guidelines */
+:root {
+  /* Primary Brand Colors */
+  --brand-primary: rgb(21, 47, 84);      /* RGB 21, 47, 84 - Dark blue */
+  --brand-secondary: rgb(0, 61, 147);    /* RGB 0, 61, 147 - Medium blue */
+  
+  /* Supporting Colors */
+  --brand-light-blue: #5ea3ff;           /* Light blue for gradients */
+  --brand-dark-gray: #231f20;            /* Dark text */
+  --brand-medium-gray: #58595b;          /* Medium gray text */
+  
+  /* UI Colors */
+  --text-primary: #333333;
+  --text-secondary: #4a4a4a;
+  --background-light: #f9f9f9;
+  --white: #ffffff;
+  
+  /* Interactive States */
+  --hover-blue: #0047cc;
+  --shadow-color: rgba(0, 61, 147, 0.15);
+  
+  /* Layout */
+  --navbar-height: 60px;
+  --max-content-width: 1200px;
+}

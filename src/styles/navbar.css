@@ -1,0 +1,83 @@
+/* Navigation Bar Styles */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  height: var(--navbar-height);
+  background-color: var(--white);
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+/* Navbar logo wrapper */
+.navbar-logo-link {
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease;
+  height: 40px;
+}
+
+.navbar-logo-link:hover {
+  opacity: 0.8;
+}
+
+/* Navbar logo image */
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .navbar-logo-link {
+    left: 1rem;
+    height: 32px;
+  }
+  
+  .navbar-logo {
+    height: 32px;
+  }
+}
+
+/* Navbar links container */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Navbar link styles */
+.navbar-link {
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: var(--brand-secondary);
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* Active link styling */
+.navbar-link.active {
+  color: var(--brand-secondary);
+  font-weight: bold;
+  border-bottom: 2px solid var(--brand-secondary);
+}
+
+.navbar-link::after {
+  content: none;
+}

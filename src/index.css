@@ -1,6 +1,30 @@
-/* Define brand color variable */
+/* Brand Colors - From Official Speedcubing Finland Brand Guidelines */
 :root {
-  --brand-color: #2969ff;
+  /* Primary Brand Colors */
+  --brand-primary: rgb(21, 47, 84);      /* RGB 21, 47, 84 - Dark blue */
+  --brand-secondary: rgb(0, 61, 147);    /* RGB 0, 61, 147 - Medium blue */
+  
+  /* Supporting Colors */
+  --brand-light-blue: #5ea3ff;           /* Light blue for gradients */
+  --brand-dark-gray: #231f20;            /* Dark text */
+  --brand-medium-gray: #58595b;          /* Medium gray text */
+  
+  /* UI Colors */
+  --text-primary: #333333;
+  --text-secondary: #4a4a4a;
+  --background-light: #f9f9f9;
+  --white: #ffffff;
+  
+  /* Interactive States */
+  --hover-blue: #0047cc;
+  --shadow-color: rgba(0, 61, 147, 0.15);
+  
+  /* Layout */
+  --navbar-height: 80px;
+  --max-content-width: 1200px;
+  
+  /* Legacy compatibility */
+  --brand-color: rgb(0, 61, 147);
   --secondary-color: #333;
 }
 
@@ -9,6 +33,213 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles and global resets */
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: var(--navbar-height);
+}
+
+.main-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 1rem;
+  flex: 1;
+  width: 100%;
+}
+
+a {
+  color: var(--brand-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.page-paragraph a:hover,
+.main-container a:hover {
+  color: var(--hover-blue);
+}
+
+/* Navigation Bar Styles */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  height: var(--navbar-height);
+  background-color: var(--white);
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+/* Navbar logo wrapper */
+.navbar-logo-link {
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease;
+  height: 50px;
+}
+
+.navbar-logo-link:hover {
+  opacity: 0.8;
+}
+
+/* Navbar logo image */
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+/* Burger menu button - hidden on desktop */
+.navbar-burger {
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--brand-secondary);
+  padding: 0.5rem;
+  z-index: 60;
+}
+
+/* Navbar links container - centered on desktop */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navbar link styles */
+.navbar-link {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar-link:hover {
+  color: var(--brand-secondary);
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* Active link styling */
+.navbar-link.active {
+  color: var(--brand-secondary);
+  font-weight: bold;
+  border-bottom: 2px solid var(--brand-secondary);
+}
+
+.navbar-link::after {
+  content: none;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-logo-link {
+    left: 1rem;
+    height: 32px;
+  }
+  
+  .navbar-logo {
+    height: 32px;
+  }
+
+  /* Show burger menu on mobile */
+  .navbar-burger {
+    display: block;
+  }
+
+  /* Mobile menu - vertical dropdown */
+  .navbar-links {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 0;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .navbar-links.navbar-links-open {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  .navbar-link {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    transform: none;
+  }
+
+  .navbar-link:hover {
+    transform: none;
+  }
+
+  .navbar-link.active {
+    border-bottom: 2px solid var(--brand-secondary);
+    background-color: rgba(0, 61, 147, 0.05);
+  }
+}
+
+/* Component Styles */
+
+/* Title Section */
+.title-section {
+  margin: 0;
+  padding: 3rem 1rem 3rem;
+  background: linear-gradient(
+    180deg,
+    var(--brand-secondary) 30%,
+    var(--brand-light-blue) 100%
+  );
+  color: var(--white);
+  text-align: center;
+  border-bottom-left-radius: 100% 60%;
+  border-bottom-right-radius: 100% 60%;
+  animation: slideDown 0.6s ease-out forwards;
+}
+
+.title-section h1 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin: 0;
+}
 
 @keyframes slideDown {
   0% {
@@ -21,171 +252,73 @@
   }
 }
 
-
-html {
-  font-family: 'Inter', sans-serif;
-}
-
-body {
-  padding-top: 60px; /* Same as navbar height */
-  margin: 0;
-}
-
-.main-container {
-  max-width: 1200px;   /* or 960px, 1200px—pick a width you like */
-  margin: 0 auto;     /* center it horizontally */
-  padding: 1rem;      /* optional padding for readability */
-}
-
-.title-section {
-  /* Your existing styles */
-  margin: 0;
-  padding: 3rem 1rem 3rem;
-  background: linear-gradient(
-    180deg,
-    var(--brand-color) 30%,
-    #5ea3ff 100%
-  );
-  color: white;
-  text-align: center;
-  border-bottom-left-radius: 100% 60%;
-  border-bottom-right-radius: 100% 60%;
-
-  /* The animation itself */
-  animation: slideDown 0.6s ease-out forwards; 
-  /* 0.6s = duration, adjust as you like */
-}
-
-.title-section h1 {
-  font-size: 1.875rem; /* ~ text-3xl */
-  font-weight: bold;   /* font-bold equivalent */
-  margin: 0;           /* Remove default heading margin if desired */
-}
-.navbar {
-  display: flex;
-  justify-content: center; /* Center the navigation links */
-  align-items: center; /* Vertically align items */
-  padding: 0 2rem; /* Horizontal padding */
-  height: 60px; /* Fixed navbar height */
-  background-color: white;
-  border-bottom: 1px solid #ddd; /* Subtle border */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
-}
-
-/* Navbar brand/logo */
-.navbar a.text-xl {
-  position: absolute; /* Pin logo to the top-left */
-  top: 50%; /* Vertically center logo in navbar */
-  left: 2rem; /* Add space from the left edge */
-  transform: translateY(-50%); /* Adjust for perfect vertical alignment */
-  text-decoration: none;
-  color: var(--brand-color); /* Brand color for the logo */
-  font-weight: bold;
-  font-size: 1.5rem; /* Adjust font size */
-}
-
-/* Navbar links container */
-.navbar-links {
-  display: flex;
-  gap: 1.5rem; /* Space between links */
-  margin-right: auto; /* Keep the links centered */
-  text-align: center;
-}
-
-/* Navbar link styles */
-.navbar-link {
-  font-size: 1rem;
-  color: var(--secondary-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem; /* Consistent padding */
-  transition: color 0.5s ease, transform 0.5s ease; /* Smooth transition for hover effects */
-}
-
-.navbar-link:hover {
-  color: var(--brand-color); /* Use brand color for hover */
-  transform: scale(1.1); /* Zoom effect */
-  text-decoration: none; /* Explicitly ensure no underline on hover */
-}
-
-/* Active link styling */
-.navbar-link.active {
-  color: var(--brand-color);
-  font-weight: bold;
-  border-bottom: 2px solid var(--brand-color); /* Active underline */
-}
-
-
-.navbar-link::after {
-  content: none; /* Remove hover underline animation for navbar */
-}
-
-/* Button styles */
+/* Button Styles */
 .button {
   display: inline-block;
   font-weight: bold;
-  padding: 0.5rem 1rem;
-  border: 2px solid var(--brand-color);
-  color: var(--brand-color);
-  background-color: white;
-  border-radius: 0.375rem;
+  font-size: 1.125rem;
+  padding: 0.875rem 2rem;
+  border: none;
+  color: var(--white) !important;
+  background-color: var(--brand-secondary);
+  border-radius: 0.5rem;
   text-align: center;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 61, 147, 0.2);
+  text-decoration: none;
 }
 
-/* Button hover state */
 .button:hover {
-  background-color: var(--brand-color);
-  color: white;
+  background-color: var(--brand-primary);
+  color: var(--white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 61, 147, 0.3);
+  text-decoration: none;
 }
 
-/* Button active (pressed) state */
 .button:active {
-  background-color: #1E5CCF;
-  color: white;
+  background-color: rgb(15, 35, 60);
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 61, 147, 0.2);
 }
 
-/* Form container styles */
+/* Form Container */
 .form-container {
   border: none;
   border-radius: 0.375rem;
   margin-bottom: 2rem;
   padding: 1rem;
-  background-color: white;
-  box-shadow: 0 2.5px 6px var(--brand-color);
+  background-color: var(--white);
+  box-shadow: 0 2.5px 6px var(--shadow-color);
 }
 
-/* Paragraph styles */
+/* Paragraph Box */
 .page-paragraph {
-  background-color: #f9f9f9; /* Light background for contrast */
-  padding: 1.5rem; /* Add space inside the box */
-  border-radius: 0.5rem; /* Rounded corners */
-  box-shadow: 0 4px 6px var(--brand-color); /* Subtle shadow */
-  margin-bottom: 1.5rem; /* Space between paragraphs */
-  line-height: 1.6; /* Improve readability */
-  color: #4a4a4a; /* Text color */
+  background-color: var(--background-light);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
 }
 
 .paragraph-title {
-  font-size: 1.25rem; /* Slightly larger for emphasis */
-  font-weight: bold; /* Make it stand out */
-  margin-bottom: 0.5rem; /* Space below the title */
-  color: #333; /* Darker color for the title */
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
-/* Ensure proper spacing for all sections */
+/* Section */
 .section {
   margin-top: 1rem;
   padding: 2rem;
-  background-color: white;
+  background-color: var(--white);
 }
 
-
+/* Event Components */
 .event-list {
   margin-top: 1rem;
 }
@@ -193,22 +326,16 @@ body {
 .event-tag {
   display: inline-block;
   border-radius: 0.375rem;
-  font-size: 0.875rem; /* Slightly smaller font */
+  font-size: 0.875rem;
   line-height: 1.25rem;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
-a {
-  color: var(--brand-color);
-  text-decoration: none; /* Remove default underline */
-  font-weight: 500; 
-  transition: color 0.3s ease; 
+/* Footer Styles */
+footer {
+  margin-top: auto;
+  background-color: var(--background-light);
+  border-top: 1px solid #ddd;
+  padding: 2rem 0;
+  color: var(--text-secondary);
 }
-
-/* Optional: Hover effect without underline */
-.page-paragraph a:hover,
-.main-container a:hover {
-  color: #0047cc; /* Slightly darker color on hover */
-}
-
-

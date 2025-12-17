@@ -57,31 +57,66 @@ Output in `dist/` folder ready for deployment.
 
 ```
 src/
-├── components/        # Reusable UI components
-│   ├── Button.jsx
-│   ├── CompetitionTable.jsx
-│   ├── EventList.jsx
-│   ├── Footer.jsx
-│   ├── JoinForm.jsx
-│   ├── Layout.jsx
-│   ├── LoginForm.jsx
-│   ├── MemberCsvChecker.jsx
-│   ├── MeetingInvitation.jsx
-│   └── Navbar.jsx
-├── pages/            # Route pages
-│   ├── Admin.jsx
-│   ├── Competitions.jsx
-│   ├── Contact.jsx
-│   ├── Home.jsx
-│   ├── Info.jsx
-│   └── Join.jsx
-├── utilities/        # Helper functions
-│   ├── api.js       # JWT-enabled API client
-│   └── wcaApi.js    # WCA API integration
-├── data/            # Static data
+├── components/
+│   └── shared/              # Shared components used across multiple pages
+│       ├── Button.jsx
+│       ├── LinkButton.jsx
+│       ├── Navbar.jsx
+│       ├── Footer.jsx
+│       ├── Layout.jsx
+│       ├── Title.jsx
+│       ├── ScrollToTop.jsx
+│       └── MeetingInvitation.jsx
+│
+├── pages/                   # Feature-based page organization
+│   ├── Home/
+│   │   ├── index.jsx       # Home page
+│   │   └── components/
+│   │       └── InfoSection.jsx
+│   ├── Competitions/
+│   │   ├── index.jsx
+│   │   └── components/
+│   │       ├── CompetitionTable.jsx
+│   │       ├── EventList.jsx
+│   │       └── EventTag.jsx
+│   ├── Join/
+│   │   ├── index.jsx
+│   │   └── components/
+│   │       └── JoinForm.jsx
+│   ├── Admin/
+│   │   ├── index.jsx
+│   │   └── components/
+│   │       ├── LoginForm.jsx
+│   │       └── MemberCsvChecker.jsx
+│   ├── Info/
+│   │   ├── index.jsx
+│   │   └── components/
+│   │       └── ParagraphBox.jsx
+│   └── Contact/
+│       └── index.jsx
+│
+├── utilities/              # Helper functions
+│   ├── api.js             # JWT-enabled API client
+│   └── wcaApi.js          # WCA API integration
+│
+├── data/                   # Static data
 │   └── wcaEvents.js
-└── assets/          # Images and static files
+│
+├── assets/                 # Images and static files
+│   ├── frontpage/         # Home page WebP images
+│   ├── infopage/          # Info page WebP images
+│   └── LOGO_H2.svg        # Official Speedcubing Finland logo
+│
+└── index.css              # Global styles with Tailwind CSS
 ```
+
+### Architecture Benefits
+
+- **Feature-based organization** - Each page has its own folder with page-specific components
+- **Clear separation** - Shared components vs page-specific components
+- **Scalable** - Easy to add new pages and features
+- **Maintainable** - Related code is co-located
+- **Professional** - Industry-standard React project structure
 
 ## 🔐 API Integration
 

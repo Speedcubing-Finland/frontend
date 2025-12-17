@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import LoginForm from '../components/LoginForm'; // Import LoginForm
-import MemberCsvChecker from '../components/MemberCsvChecker';
-import { isAuthenticated as checkAuth, logout, api } from '../utilities/api';
+import LoginForm from './components/LoginForm';
+import MemberCsvChecker from './components/MemberCsvChecker';
+import { isAuthenticated as checkAuth, logout, api } from '../../utilities/api';
 
 function Admin() {
   const [submissions, setSubmissions] = useState([]);

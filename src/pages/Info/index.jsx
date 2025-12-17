@@ -1,7 +1,7 @@
-import ParagraphBox from '../components/ParagraphBox';
-import placeholder from '../assets/placeholder.png'; // Placeholder image
-import kuutiostoreLogo from '../assets/infopage/kuutiostore_logo-C4YUgNj6.webp'; // Kuutiostore logo
-import vanhaKuutio from '../assets/infopage/vanhaKuutio-DbJwt25s.webp'; // Old Rubik's cube image
+import ParagraphBox from './components/ParagraphBox';
+import placeholder from '../../assets/placeholder.png';
+import kuutiostoreLogo from '../../assets/infopage/kuutiostore_logo-C4YUgNj6.webp';
+import vanhaKuutio from '../../assets/infopage/vanhaKuutio-DbJwt25s.webp';
 
 function Info() {
   return (

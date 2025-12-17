@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import LinkButton from './LinkButton';
+import LinkButton from '../../../components/shared/LinkButton';
 
 function InfoSection({
   title,

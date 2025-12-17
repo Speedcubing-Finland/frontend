@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { login } from '../utilities/api';
+import { login } from '../../../utilities/api';
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');

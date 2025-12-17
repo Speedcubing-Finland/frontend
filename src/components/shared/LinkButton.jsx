@@ -9,8 +9,7 @@ function LinkButton({ to, children, className = '' }) {
   return (
     <Link
       to={to}
-      className={`inline-block bg-brandColor text-white font-bold py-2 px-4 rounded hover:bg-blue-700 active:bg-blue-900 hover:text-white transition-colors ${className}`}
-      style={{ color: 'white' }} // Explicitly set text color to white
+      className={`button ${className}`}
     >
       {children}
     </Link>

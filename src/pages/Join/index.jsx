@@ -1,5 +1,5 @@
-import JoinForm from '../components/JoinForm';
-import ParagraphBox from '../components/ParagraphBox'; // Import ParagraphBox
+import JoinForm from './components/JoinForm';
+import ParagraphBox from '../Info/components/ParagraphBox';
 
 function Join() {
   return (

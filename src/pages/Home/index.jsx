@@ -1,8 +1,8 @@
-import InfoSection from '../components/InfoSection';
-import otaYhteytta from '../assets/frontpage/IMG_5716-CbtBewlV.webp';
-import kilpailutSuomessa from '../assets/frontpage/IMG_5617-DH1gps98.webp'
-import kuinkaAloittaa from '../assets/frontpage/IMG_5639-1-RgRQpNac.webp';
-import mitaOnSpeedcubing from '../assets/frontpage/IMG_5479-DfWxHl0Z.webp';
+import InfoSection from './components/InfoSection';
+import otaYhteytta from '../../assets/frontpage/IMG_5716-CbtBewlV.webp';
+import kilpailutSuomessa from '../../assets/frontpage/IMG_5617-DH1gps98.webp'
+import kuinkaAloittaa from '../../assets/frontpage/IMG_5639-1-RgRQpNac.webp';
+import mitaOnSpeedcubing from '../../assets/frontpage/IMG_5479-DfWxHl0Z.webp';
 
 function Home() {
   return (

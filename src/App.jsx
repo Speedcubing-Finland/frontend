@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout'; // Use the Layout component
-import ScrollToTop from './components/ScrollToTop'; // Import ScrollToTop
+import Layout from './components/shared/Layout';
+import ScrollToTop from './components/shared/ScrollToTop';
 import './index.css';
 
 import Home from './pages/Home';

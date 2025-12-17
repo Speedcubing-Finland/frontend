@@ -1,4 +1,4 @@
-import ParagraphBox from "../components/ParagraphBox"
+import ParagraphBox from "../Info/components/ParagraphBox"
 
 function Contact() {
     return (

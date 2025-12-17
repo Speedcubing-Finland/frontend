@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import ParagraphBox from '../components/ParagraphBox';
-import EventList from '../components/EventList';
-import CompetitionTable from '../components/CompetitionTable'; // Import the table component
-import { fetchUpcomingCompetitions } from '../utilities/wcaApi'; // Import the API utility
-import wcaEvents from '../data/wcaEvents'; // Import centralized WCA events data
+import ParagraphBox from '../Info/components/ParagraphBox';
+import EventList from './components/EventList';
+import CompetitionTable from './components/CompetitionTable';
+import { fetchUpcomingCompetitions } from '../../utilities/wcaApi';
+import wcaEvents from '../../data/wcaEvents';
 
 function Competitions() {
   const [competitions, setCompetitions] = useState([]);

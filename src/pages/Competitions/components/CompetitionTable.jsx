@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import wcaEvents from '../data/wcaEvents';
-import EventTag from './EventTag'; // Import the EventTag component
+import wcaEvents from '../../../data/wcaEvents';
+import EventTag from './EventTag';
 
 function CompetitionTable({ competitions }) {
   // Get today's date

@@ -10,7 +10,11 @@ export default {
         'custom': '840px',
       },
       colors: {
-        brandColor: '#2969ff', // Renamed from brandBlue to brandColor
+        brand: {
+          primary: 'rgb(21, 47, 84)',
+          secondary: 'rgb(0, 61, 147)',
+          light: '#5ea3ff',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

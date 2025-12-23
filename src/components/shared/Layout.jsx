@@ -5,6 +5,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 function Layout() {
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   // Map routes to titles
   const pageTitles = {
@@ -22,10 +23,11 @@ function Layout() {
   return (
     <>
       <Navbar />
-      <Title>{currentTitle}</Title>
+      {/* Only show title banner on non-home pages */}
+      {!isHomePage && <Title>{currentTitle}</Title>}
       
-      {/* Constrained main content */}
-      <div className="main-container">
+      {/* Full-width container for homepage, constrained for other pages */}
+      <div className={isHomePage ? 'main-container-full' : 'main-container'}>
         <Outlet />
       </div>
 

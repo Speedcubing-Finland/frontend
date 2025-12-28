@@ -52,10 +52,12 @@
   /* Global resets and layout foundation */
   html {
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
 
   body {
     margin: 0;
+    overflow-x: hidden;
   }
 
   #root {
@@ -63,6 +65,7 @@
     flex-direction: column;
     min-height: 100vh;
     padding-top: var(--navbar-height);
+    overflow-x: hidden;
   }
 }
 

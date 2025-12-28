@@ -7,7 +7,7 @@ function Layout() {
   const location = useLocation();
   
   // Pages that have their own hero sections (don't show old title banner)
-  const pagesWithHero = ['/', '/competitions'];
+  const pagesWithHero = ['/', '/competitions', '/info'];
   const hasOwnHero = pagesWithHero.includes(location.pathname);
 
   // Map routes to titles (for pages without custom hero)

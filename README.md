@@ -60,19 +60,21 @@ src/
 ├── components/
 │   └── shared/              # Shared components used across multiple pages
 │       ├── Button.jsx
-│       ├── LinkButton.jsx
 │       ├── Navbar.jsx
 │       ├── Footer.jsx
 │       ├── Layout.jsx
 │       ├── Title.jsx
-│       ├── ScrollToTop.jsx
-│       └── MeetingInvitation.jsx
+│       └── ScrollToTop.jsx
 │
 ├── pages/                   # Feature-based page organization
 │   ├── Home/
 │   │   ├── index.jsx       # Home page
 │   │   └── components/
-│   │       └── InfoSection.jsx
+│   │       ├── HeroSection.jsx
+│   │       ├── FeaturesSection.jsx
+│   │       ├── StatsSection.jsx
+│   │       ├── ContentSection.jsx
+│   │       └── CTASection.jsx
 │   ├── Competitions/
 │   │   ├── index.jsx
 │   │   └── components/

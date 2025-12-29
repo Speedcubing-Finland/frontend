@@ -49,10 +49,10 @@ function Admin() {
     return <LoginForm onLogin={handleLogin} />; // Display login form if not authenticated
   }
 
-  const handleApprove = (index) => {
-    api.post('/api/admin/approve', { index })
+  const handleApprove = (id) => {
+    api.post('/api/admin/approve', { id })
       .then(() => {
-        setSubmissions((prev) => prev.filter((_, i) => i !== index));
+        setSubmissions((prev) => prev.filter((sub) => sub.id !== id));
         alert('Submission approved successfully!');
       })
       .catch((error) => {
@@ -61,10 +61,10 @@ function Admin() {
       });
   };
 
-  const handleReject = (index) => {
-    api.post('/api/admin/reject', { index })
+  const handleReject = (id) => {
+    api.post('/api/admin/reject', { id })
       .then(() => {
-        setSubmissions((prev) => prev.filter((_, i) => i !== index));
+        setSubmissions((prev) => prev.filter((sub) => sub.id !== id));
         alert('Submission rejected successfully!');
       })
       .catch((error) => {
@@ -98,24 +98,24 @@ function Admin() {
             </tr>
           </thead>
           <tbody>
-            {submissions.map((submission, index) => (
-              <tr key={index} className="even:bg-gray-100">
-                <td className="border p-2">{submission.firstName}</td>
-                <td className="border p-2">{submission.lastName}</td>
+            {submissions.map((submission) => (
+              <tr key={submission.id} className="even:bg-gray-100">
+                <td className="border p-2">{submission.first_name}</td>
+                <td className="border p-2">{submission.last_name}</td>
                 <td className="border p-2">{submission.city}</td>
                 <td className="border p-2">{submission.email}</td>
-                <td className="border p-2">{submission.birthDate}</td>
-                <td className="border p-2">{submission.wcaId || '—'}</td>
+                <td className="border p-2">{submission.birth_date}</td>
+                <td className="border p-2">{submission.wca_id || '—'}</td>
                 <td className="border p-2">
                   <button
                     className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 mr-2"
-                    onClick={() => handleApprove(index)}
+                    onClick={() => handleApprove(submission.id)}
                   >
                     Hyväksy
                   </button>
                   <button
                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                    onClick={() => handleReject(index)}
+                    onClick={() => handleReject(submission.id)}
                   >
                     Hylkää
                   </button>

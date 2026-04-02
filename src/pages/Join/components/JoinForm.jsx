@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
+import { API_BASE_URL } from '../../../utilities/api';
 
 function JoinForm() {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ function JoinForm() {
       setErrors({});
       setIsSubmitting(true);
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/submit-member`, {
+        const response = await fetch(`${API_BASE_URL}/api/submit-member`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

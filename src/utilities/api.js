@@ -3,7 +3,25 @@
  * Automatically adds JWT token to requests
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const PRODUCTION_API_BASE_URL = 'https://sf-backend-dt7l.onrender.com';
+
+const resolveApiBaseUrl = () => {
+  const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL;
+  if (configuredBaseUrl) {
+    return configuredBaseUrl;
+  }
+
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname === 'speedcubingfinland.fi' || hostname === 'www.speedcubingfinland.fi') {
+      return PRODUCTION_API_BASE_URL;
+    }
+  }
+
+  return 'http://localhost:3000';
+};
+
+export const API_BASE_URL = resolveApiBaseUrl();
 
 /**
  * Get JWT token from localStorage

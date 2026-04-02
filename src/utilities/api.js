@@ -4,21 +4,21 @@
  */
 
 const PRODUCTION_API_BASE_URL = 'https://sf-backend-dt7l.onrender.com';
+const LOCAL_API_BASE_URL = 'http://localhost:3000';
 
 const resolveApiBaseUrl = () => {
-  const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL;
-  if (configuredBaseUrl) {
-    return configuredBaseUrl;
-  }
-
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname === 'speedcubingfinland.fi' || hostname === 'www.speedcubingfinland.fi') {
-      return PRODUCTION_API_BASE_URL;
+    const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
+
+    if (isLocalhost) {
+      return import.meta.env.VITE_API_BASE_URL || LOCAL_API_BASE_URL;
     }
+
+    return PRODUCTION_API_BASE_URL;
   }
 
-  return 'http://localhost:3000';
+  return PRODUCTION_API_BASE_URL;
 };
 
 export const API_BASE_URL = resolveApiBaseUrl();

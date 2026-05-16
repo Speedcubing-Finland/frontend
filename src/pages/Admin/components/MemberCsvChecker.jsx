@@ -8,6 +8,7 @@ function MemberCsvChecker({ members = [] }) {
   const [noWcaIdButEmailMatch, setNoWcaIdButEmailMatch] = useState([]);
   const [foundByWca, setFoundByWca] = useState([]);
   const [csvCompetitors, setCsvCompetitors] = useState([]);
+  const [filteredOutCount, setFilteredOutCount] = useState(0);
   const [error, setError] = useState('');
   const [showFoundByWca, setShowFoundByWca] = useState(false);
   const [showEmailMatches, setShowEmailMatches] = useState(false);
@@ -45,6 +46,16 @@ function MemberCsvChecker({ members = [] }) {
 
   function getCompetitorEmail(row) {
     return pickFirstValue(row, ['Email', 'email', 'E-mail', 'E-mail Address']);
+  }
+
+  function getCompetitorStatus(row) {
+    return pickFirstValue(row, ['Registration Status', 'registration_status', 'Status', 'status']);
+  }
+
+  function isActiveRegistration(row) {
+    const status = normalize(getCompetitorStatus(row));
+    if (!status) return true; // no status column → include all
+    return status === 'accepted';
   }
 
   function enrichCompetitor(row) {
@@ -109,6 +120,7 @@ function MemberCsvChecker({ members = [] }) {
     setNoWcaIdButEmailMatch([]);
     setNotMembers([]);
     setCsvCompetitors([]);
+    setFilteredOutCount(0);
     setShowFoundByWca(false);
     setShowEmailMatches(false);
     setShowNotMembers(false);
@@ -132,9 +144,11 @@ function MemberCsvChecker({ members = [] }) {
           return;
         }
 
+        const activeCompetitors = results.data.filter(isActiveRegistration);
         setCsvFileName(file.name);
-        setCsvCompetitors(results.data);
-        compareWithMembers(results.data);
+        setCsvCompetitors(activeCompetitors);
+        setFilteredOutCount(results.data.length - activeCompetitors.length);
+        compareWithMembers(activeCompetitors);
       },
       error: (parseError) => setError(`CSV parsing error: ${parseError.message}`),
     });
@@ -248,7 +262,10 @@ function MemberCsvChecker({ members = [] }) {
                 </div>
               </div>
               <p className="mt-3 text-sm text-slate-600">
-                Verrattu kilpailijoita yhteensä: {csvCompetitors.length}
+                Verrattu hyväksyttyjä ilmoittautumisia yhteensä: {csvCompetitors.length}
+                {filteredOutCount > 0 && (
+                  <span className="ml-2 text-slate-400">({filteredOutCount} peruttu/poistettu jätetty pois)</span>
+                )}
               </p>
             </div>
 

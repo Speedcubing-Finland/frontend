@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { FaCheckCircle, FaSignOutAlt, FaUsers, FaUserClock } from 'react-icons/fa';
 import LoginForm from './components/LoginForm';
 import MemberCsvChecker from './components/MemberCsvChecker';
+import MembersTable from './components/MembersTable';
+import MemberEditModal from './components/MemberEditModal';
+import { formatDate } from '../../utilities/dates';
 import { isAuthenticated as checkAuth, logout, api } from '../../utilities/api';
 
 function Admin() {
@@ -13,6 +16,7 @@ function Admin() {
   const [isApprovingAll, setIsApprovingAll] = useState(false);
   const [bulkProgress, setBulkProgress] = useState({ completed: 0, total: 0 });
   const [statusMessage, setStatusMessage] = useState(null);
+  const [editingMember, setEditingMember] = useState(null);
 
   useEffect(() => {
     if (checkAuth()) {
@@ -109,6 +113,16 @@ function Admin() {
     } finally {
       clearIdFromProcessing(id);
     }
+  };
+
+  const handleSaveMember = async (id, values) => {
+    const updatedMember = await api.put(`/api/admin/members/${id}`, values);
+
+    setMembers((prev) =>
+      prev.map((member) => (member.id === updatedMember.id ? updatedMember : member))
+    );
+    setEditingMember(null);
+    setStatusMessage({ type: 'success', text: 'Jäsenen tiedot päivitetty.' });
   };
 
   const handleApproveAll = async () => {
@@ -234,6 +248,8 @@ function Admin() {
 
       <MemberCsvChecker members={members} />
 
+      <MembersTable members={members} onEdit={setEditingMember} isLoading={isLoadingData} />
+
       <section className="rounded-xl border border-slate-200 bg-white shadow-sm">
         <div className="flex flex-col gap-3 border-b border-slate-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-xl font-bold text-slate-900">Odottaa käsittelyä</h2>
@@ -278,7 +294,7 @@ function Admin() {
                       <td className="px-4 py-3 text-sm text-slate-700">{submission.last_name}</td>
                       <td className="px-4 py-3 text-sm text-slate-700">{submission.city}</td>
                       <td className="px-4 py-3 text-sm text-slate-700">{submission.email}</td>
-                      <td className="px-4 py-3 text-sm text-slate-700">{submission.birth_date}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{formatDate(submission.birth_date)}</td>
                       <td className="px-4 py-3 text-sm font-medium text-slate-800">{submission.wca_id || '—'}</td>
                       <td className="px-4 py-3">
                         <div className="flex flex-wrap gap-2">
@@ -306,6 +322,14 @@ function Admin() {
           )}
         </div>
       </section>
+      {editingMember && (
+        <MemberEditModal
+          member={editingMember}
+          onSave={handleSaveMember}
+          onClose={() => setEditingMember(null)}
+        />
+      )}
+
       <div className="h-8" />
       </div>
     </div>

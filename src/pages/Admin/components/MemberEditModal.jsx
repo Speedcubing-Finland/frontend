@@ -11,7 +11,7 @@ const FIELDS = [
   { name: 'wca_id', label: 'WCA ID', type: 'text', required: false },
 ];
 
-function MemberEditModal({ member, onSave, onClose }) {
+function MemberEditModal({ member, onSave, onClose, title = 'Muokkaa jäsentä' }) {
   const [form, setForm] = useState({
     first_name: member.first_name || '',
     last_name: member.last_name || '',
@@ -57,7 +57,7 @@ function MemberEditModal({ member, onSave, onClose }) {
     >
       <div className="w-full max-w-lg rounded-xl bg-white shadow-xl">
         <div className="border-b border-slate-200 px-5 py-4">
-          <h3 className="text-lg font-bold text-slate-900">Muokkaa jäsentä</h3>
+          <h3 className="text-lg font-bold text-slate-900">{title}</h3>
           <p className="mt-1 text-sm text-slate-500">
             {member.first_name} {member.last_name}
           </p>
@@ -122,6 +122,7 @@ MemberEditModal.propTypes = {
   }).isRequired,
   onSave: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  title: PropTypes.string,
 };
 
 export default MemberEditModal;

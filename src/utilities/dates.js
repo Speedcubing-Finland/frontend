@@ -40,3 +40,12 @@ export const toDateInputValue = (value) => {
   const day = `${date.getDate()}`.padStart(2, '0');
   return `${date.getFullYear()}-${month}-${day}`;
 };
+
+/** Format a timestamp for an <input type="datetime-local">: YYYY-MM-DDTHH:MM. */
+export const toDateTimeInputValue = (value) => {
+  const date = parse(value);
+  if (!date) return '';
+  const pad = (n) => `${n}`.padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}` +
+    `T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+};

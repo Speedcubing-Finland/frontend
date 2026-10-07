@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { FaCheckCircle, FaSignOutAlt, FaUsers, FaUserClock } from 'react-icons/fa';
+import { FaBullhorn, FaCheckCircle, FaPen, FaSignOutAlt, FaUsers, FaUserClock } from 'react-icons/fa';
 import LoginForm from './components/LoginForm';
 import MemberCsvChecker from './components/MemberCsvChecker';
 import MembersTable from './components/MembersTable';
 import MemberEditModal from './components/MemberEditModal';
+import AnnouncementsPanel from './components/AnnouncementsPanel';
 import { formatDate } from '../../utilities/dates';
 import { isAuthenticated as checkAuth, logout, api } from '../../utilities/api';
 
@@ -17,6 +18,8 @@ function Admin() {
   const [bulkProgress, setBulkProgress] = useState({ completed: 0, total: 0 });
   const [statusMessage, setStatusMessage] = useState(null);
   const [editingMember, setEditingMember] = useState(null);
+  const [editingSubmission, setEditingSubmission] = useState(null);
+  const [activeTab, setActiveTab] = useState('members');
 
   useEffect(() => {
     if (checkAuth()) {
@@ -125,6 +128,16 @@ function Admin() {
     setStatusMessage({ type: 'success', text: 'Jäsenen tiedot päivitetty.' });
   };
 
+  const handleSaveSubmission = async (id, values) => {
+    const updated = await api.put(`/api/admin/submissions/${id}`, values);
+
+    setSubmissions((prev) =>
+      prev.map((submission) => (submission.id === updated.id ? updated : submission))
+    );
+    setEditingSubmission(null);
+    setStatusMessage({ type: 'success', text: 'Hakemuksen tiedot päivitetty.' });
+  };
+
   const handleApproveAll = async () => {
     if (submissions.length === 0 || isApprovingAll) return;
 
@@ -197,6 +210,47 @@ function Admin() {
         </div>
       </section>
 
+      <div className="mb-6 flex gap-2 border-b border-slate-200">
+        {[
+          { id: 'members', label: 'Jäsenhallinta', icon: FaUsers },
+          { id: 'announcements', label: 'Tiedotteet', icon: FaBullhorn },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => setActiveTab(tab.id)}
+            className={`-mb-px inline-flex items-center gap-2 border-b-2 px-4 py-3 font-semibold transition ${
+              activeTab === tab.id
+                ? 'border-brand-secondary text-brand-secondary'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            <tab.icon className="text-sm" />
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {statusMessage && (
+        <div
+          className={`mb-6 rounded-lg px-4 py-3 text-sm font-medium ${
+            statusMessage.type === 'success'
+              ? 'bg-emerald-50 text-emerald-700'
+              : statusMessage.type === 'warning'
+                ? 'bg-amber-50 text-amber-700'
+                : 'bg-red-50 text-red-700'
+          }`}
+        >
+          {statusMessage.text}
+        </div>
+      )}
+
+      {activeTab === 'announcements' && (
+        <AnnouncementsPanel onStatus={setStatusMessage} />
+      )}
+
+      {activeTab === 'members' && (
+        <>
       <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
         <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex items-center gap-3 text-slate-600">
@@ -231,24 +285,6 @@ function Admin() {
           )}
         </div>
       </div>
-
-      {statusMessage && (
-        <div
-          className={`mb-6 rounded-lg px-4 py-3 text-sm font-medium ${
-            statusMessage.type === 'success'
-              ? 'bg-emerald-50 text-emerald-700'
-              : statusMessage.type === 'warning'
-                ? 'bg-amber-50 text-amber-700'
-                : 'bg-red-50 text-red-700'
-          }`}
-        >
-          {statusMessage.text}
-        </div>
-      )}
-
-      <MemberCsvChecker members={members} />
-
-      <MembersTable members={members} onEdit={setEditingMember} isLoading={isLoadingData} />
 
       <section className="rounded-xl border border-slate-200 bg-white shadow-sm">
         <div className="flex flex-col gap-3 border-b border-slate-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -312,6 +348,14 @@ function Admin() {
                           >
                             Hylkää
                           </button>
+                          <button
+                            className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-3 py-1.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+                            onClick={() => setEditingSubmission(submission)}
+                            disabled={isRowProcessing}
+                          >
+                            <FaPen className="text-xs" />
+                            Muokkaa
+                          </button>
                         </div>
                       </td>
                     </tr>
@@ -322,6 +366,22 @@ function Admin() {
           )}
         </div>
       </section>
+
+      <MemberCsvChecker members={members} />
+
+      <MembersTable members={members} onEdit={setEditingMember} isLoading={isLoadingData} />
+
+        </>
+      )}
+      {editingSubmission && (
+        <MemberEditModal
+          member={editingSubmission}
+          title="Muokkaa hakemusta"
+          onSave={handleSaveSubmission}
+          onClose={() => setEditingSubmission(null)}
+        />
+      )}
+
       {editingMember && (
         <MemberEditModal
           member={editingMember}

@@ -1,4 +1,5 @@
 import HeroSection from './components/HeroSection';
+import AnnouncementsSection from './components/AnnouncementsSection';
 import FeaturesSection from './components/FeaturesSection';
 import StatsSection from './components/StatsSection';
 import ContentSection from './components/ContentSection';
@@ -16,6 +17,9 @@ function Home() {
       {/* Full-screen animated hero */}
       <HeroSection />
       
+      {/* Meeting invitations and news, hidden when there are none */}
+      <AnnouncementsSection />
+
       {/* Features grid with animated cards */}
       <FeaturesSection />
       

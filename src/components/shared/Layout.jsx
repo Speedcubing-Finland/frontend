@@ -1,4 +1,5 @@
 import Navbar from './Navbar';
+import AnnouncementBanner from './AnnouncementBanner';
 import Footer from './Footer';
 import Title from './Title';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -24,6 +25,7 @@ function Layout() {
   return (
     <>
       <Navbar />
+      <AnnouncementBanner />
       {/* Only show title banner on pages without their own hero */}
       {!hasOwnHero && <Title>{currentTitle}</Title>}
       

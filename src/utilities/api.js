@@ -3,7 +3,7 @@
  * Automatically adds JWT token to requests
  */
 
-const PRODUCTION_API_BASE_URL = 'https://sf-backend-dt7l.onrender.com';
+const PRODUCTION_API_BASE_URL = 'https://api.speedcubingfinland.fi';
 const LOCAL_API_BASE_URL = 'http://localhost:3000';
 
 const resolveApiBaseUrl = () => {

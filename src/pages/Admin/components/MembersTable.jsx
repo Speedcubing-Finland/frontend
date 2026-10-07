@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FaChevronDown, FaChevronRight, FaPen, FaSearch, FaSort, FaSortDown, FaSortUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronRight, FaFileDownload, FaPen, FaSearch, FaSort, FaSortDown, FaSortUp } from 'react-icons/fa';
 import { formatDate, formatDateTime } from '../../../utilities/dates';
+import { downloadCsv, today } from '../../../utilities/csv';
 
 const COLUMNS = [
   { key: 'first_name', label: 'Etunimi', type: 'text' },
@@ -57,6 +58,23 @@ function MembersTable({ members, onEdit, isLoading }) {
     );
   }, [members, search, sort]);
 
+  // Exports exactly what is on screen: the current search and sort order
+  const handleExport = () => {
+    downloadCsv(
+      `speedcubing-finland-jasenet-${today()}.csv`,
+      ['Etunimi', 'Sukunimi', 'Sähköposti', 'Kaupunki', 'Syntymäaika', 'WCA ID', 'Liittynyt'],
+      visibleMembers.map((member) => [
+        member.first_name || '',
+        member.last_name || '',
+        member.email || '',
+        member.city || '',
+        formatDate(member.birth_date),
+        member.wca_id || '',
+        formatDate(member.approved_at),
+      ])
+    );
+  };
+
   const renderCell = (member, column) => {
     const value = member[column.key];
     if (column.type === 'date') return formatDate(value);
@@ -79,6 +97,18 @@ function MembersTable({ members, onEdit, isLoading }) {
         </button>
 
         {isOpen && (
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <button
+              type="button"
+              onClick={handleExport}
+              disabled={visibleMembers.length === 0}
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+              title="Lataa näkyvät jäsenet CSV-tiedostona"
+            >
+              <FaFileDownload className="text-sm" />
+              Vie CSV ({visibleMembers.length})
+            </button>
+
           <div className="relative sm:w-72">
             <FaSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
@@ -88,6 +118,7 @@ function MembersTable({ members, onEdit, isLoading }) {
               placeholder="Hae nimellä, sähköpostilla tai WCA ID:llä"
               className="w-full rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm text-slate-900 focus:border-brand-secondary focus:outline-none focus:ring-1 focus:ring-brand-secondary"
             />
+          </div>
           </div>
         )}
       </div>

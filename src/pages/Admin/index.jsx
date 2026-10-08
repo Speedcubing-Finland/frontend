@@ -387,6 +387,7 @@ function Admin() {
           member={editingMember}
           onSave={handleSaveMember}
           onClose={() => setEditingMember(null)}
+          showSubscription
         />
       )}
 

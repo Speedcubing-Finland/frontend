@@ -11,7 +11,7 @@ const FIELDS = [
   { name: 'wca_id', label: 'WCA ID', type: 'text', required: false },
 ];
 
-function MemberEditModal({ member, onSave, onClose, title = 'Muokkaa jäsentä' }) {
+function MemberEditModal({ member, onSave, onClose, title = 'Muokkaa jäsentä', showSubscription = false }) {
   const [form, setForm] = useState({
     first_name: member.first_name || '',
     last_name: member.last_name || '',
@@ -19,6 +19,7 @@ function MemberEditModal({ member, onSave, onClose, title = 'Muokkaa jäsentä' 
     email: member.email || '',
     birth_date: toDateInputValue(member.birth_date),
     wca_id: member.wca_id || '',
+    competition_emails: Boolean(member.competition_emails),
   });
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState('');
@@ -81,6 +82,26 @@ function MemberEditModal({ member, onSave, onClose, title = 'Muokkaa jäsentä' 
             ))}
           </div>
 
+          {showSubscription && (
+            <label className="mt-4 flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
+              <input
+                type="checkbox"
+                checked={form.competition_emails}
+                onChange={(event) =>
+                  setForm((prev) => ({ ...prev, competition_emails: event.target.checked }))
+                }
+                disabled={isSaving}
+                className="mt-0.5 h-4 w-4 accent-brand-secondary"
+              />
+              <span>
+                <span className="font-medium">Vastaanottaa kilpailuilmoitukset</span>
+                <span className="block text-slate-500">
+                  Poista rasti, jos jäsen on pyytänyt lopettamaan ilmoitukset.
+                </span>
+              </span>
+            </label>
+          )}
+
           {error && (
             <p className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
               {error}
@@ -119,10 +140,12 @@ MemberEditModal.propTypes = {
     email: PropTypes.string,
     birth_date: PropTypes.string,
     wca_id: PropTypes.string,
+    competition_emails: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   }).isRequired,
   onSave: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string,
+  showSubscription: PropTypes.bool,
 };
 
 export default MemberEditModal;

@@ -10,6 +10,8 @@ function JoinForm() {
     email: '',
     wcaId: '',
     birthDate: '',
+    // Unticked on purpose: a pre-ticked box is not consent
+    competitionEmails: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -18,8 +20,8 @@ function JoinForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
@@ -64,6 +66,7 @@ function JoinForm() {
             city: '',
             email: '',
             wcaId: '',
+            competitionEmails: false,
             birthDate: '',
           });
           setTimeout(() => setSuccessMessage(''), 8000);
@@ -217,6 +220,24 @@ function JoinForm() {
               />
             </div>
           </div>
+
+          {/* Competition announcements - opt in, never pre-ticked */}
+          <label className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <input
+              type="checkbox"
+              name="competitionEmails"
+              checked={formData.competitionEmails}
+              onChange={handleChange}
+              className="mt-1 h-4 w-4 accent-brand-secondary"
+            />
+            <span className="text-sm text-gray-700">
+              <span className="font-medium">Haluan sähköpostia tulevista kilpailuista</span>
+              <span className="block text-gray-500">
+                Lähetämme viestin, kun Suomeen lisätään uusi WCA-kilpailu. Voit peruuttaa
+                tilauksen milloin tahansa jokaisessa viestissä olevasta linkistä.
+              </span>
+            </span>
+          </label>
 
           {/* Submit Button */}
           <button

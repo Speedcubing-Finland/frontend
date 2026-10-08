@@ -17,6 +17,7 @@ function Layout() {
     '/join': 'Jäseneksi',
     '/info': 'Tietoa',
     '/admin': 'Admin Panel',
+    '/unsubscribe': 'Sähköpostiasetukset',
   };
 
   // Get the title based on the current route

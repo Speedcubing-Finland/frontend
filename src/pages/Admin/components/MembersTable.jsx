@@ -13,10 +13,14 @@ const COLUMNS = [
   { key: 'wca_id', label: 'WCA ID', type: 'text' },
   { key: 'approved_at', label: 'Liittynyt', type: 'date' },
   { key: 'edited_at', label: 'Muokattu', type: 'datetime' },
+  { key: 'competition_emails', label: 'Kilpailuviestit', type: 'bool' },
 ];
 
 /** Empty values always sort last, whichever direction is active. */
 const compareValues = (a, b, type) => {
+  // Checked before the empty-value rule: 0 is a real value here, not "missing"
+  if (type === 'bool') return Number(a ? 1 : 0) - Number(b ? 1 : 0);
+
   const left = a ?? '';
   const right = b ?? '';
   if (!left && !right) return 0;
@@ -62,7 +66,7 @@ function MembersTable({ members, onEdit, isLoading }) {
   const handleExport = () => {
     downloadCsv(
       `speedcubing-finland-jasenet-${today()}.csv`,
-      ['Etunimi', 'Sukunimi', 'Sähköposti', 'Kaupunki', 'Syntymäaika', 'WCA ID', 'Liittynyt'],
+      ['Etunimi', 'Sukunimi', 'Sähköposti', 'Kaupunki', 'Syntymäaika', 'WCA ID', 'Liittynyt', 'Kilpailuviestit'],
       visibleMembers.map((member) => [
         member.first_name || '',
         member.last_name || '',
@@ -71,6 +75,7 @@ function MembersTable({ members, onEdit, isLoading }) {
         formatDate(member.birth_date),
         member.wca_id || '',
         formatDate(member.approved_at),
+        member.competition_emails ? 'Kyllä' : 'Ei',
       ])
     );
   };
@@ -79,6 +84,7 @@ function MembersTable({ members, onEdit, isLoading }) {
     const value = member[column.key];
     if (column.type === 'date') return formatDate(value);
     if (column.type === 'datetime') return formatDateTime(value);
+    if (column.type === 'bool') return value ? 'Kyllä' : 'Ei';
     return value || '—';
   };
 

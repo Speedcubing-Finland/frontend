@@ -8,6 +8,7 @@ import Competitions from './pages/Competitions';
 import Contact from './pages/Contact';
 import Join from './pages/Join';
 import Admin from './pages/Admin';
+import Unsubscribe from './pages/Unsubscribe';
 import Info from './pages/Info';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="join" element={<Join />} />
           <Route path="info" element={<Info />} />
           <Route path="admin" element={<Admin />} />
+          <Route path="unsubscribe" element={<Unsubscribe />} />
         </Route>
       </Routes>
     </BrowserRouter>
